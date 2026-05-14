@@ -171,102 +171,99 @@ Five built-in calculators (no auth required):
 ---
 
 ## Project Structure
-101 - Copy/
-├── financepro-backend-fixed/
-│   └── server/
-│       ├── .env                         # Environment variables
-│       ├── app.js                       # Express app, middleware, routes
-│       ├── server.js                    # Entry point — DB connect + listen
-│       ├── config/
-│       │   └── db.js                    # Sequelize connection config
-│       ├── models/
-│       │   └── index.js                 # All Sequelize models + associations
-│       ├── controllers/
-│       │   ├── auth.controller.js
-│       │   ├── account.controller.js
-│       │   ├── transaction.controller.js
-│       │   ├── budget.controller.js
-│       │   ├── goal.controller.js
-│       │   ├── debt.controller.js
-│       │   ├── investment.controller.js
-│       │   ├── recurring.controller.js
-│       │   ├── report.controller.js
-│       │   ├── insight.controller.js
-│       │   ├── notification.controller.js
-│       │   ├── calculator.controller.js
-│       │   └── user.controller.js
-│       ├── routes/
-│       │   ├── auth.routes.js
-│       │   ├── user.routes.js
-│       │   ├── account.routes.js
-│       │   ├── transaction.routes.js
-│       │   ├── category.routes.js
-│       │   ├── income.routes.js
-│       │   └── combined.routes.js       # Budgets, goals, debts, investments,
-│       │                                #   recurring, reports, insights,
-│       │                                #   notifications, calculators
-│       ├── middleware/
-│       │   ├── auth.middleware.js       # JWT verification
-│       │   └── errorHandler.js         # Global error handler
-│       ├── services/
-│       │   └── insight.service.js      # Insight generation logic
-│       ├── jobs/
-│       │   └── cronJobs.js             # Scheduled tasks
-│       ├── utils/
-│       │   ├── financeCalculations.js  # EMI, SIP, compound, payoff plans
-│       │   └── response.js             # Standardized API response helpers
-│       └── seeders/
-│           └── seed.js                 # Demo data seeder
-│
-└── financepro-frontend-fixed/
-└── client/
-├── .env                         # VITE_API_URL
-├── index.html
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── src/
-│   ├── main.jsx                 # React entry point
-│   ├── App.jsx                  # Router + auth guards
-│   ├── index.css                # Global styles + CSS variables
-│   ├── api/
-│   │   └── axios.js             # Axios instance + token interceptors
-│   ├── store/
-│   │   ├── index.js             # Redux store
-│   │   └── authSlice.js         # Auth state + async thunks
-│   ├── hooks/
-│   │   └── useApi.js            # Generic API hook
-│   ├── components/
-│   │   ├── common/
-│   │   │   ├── ConfirmDialog.jsx
-│   │   │   ├── EmptyState.jsx
-│   │   │   ├── Modal.jsx
-│   │   │   └── Spinner.jsx
-│   │   └── layout/
-│   │       ├── AppLayout.jsx
-│   │       ├── Header.jsx
-│   │       └── Sidebar.jsx
-│   ├── pages/
-│   │   ├── LoginPage.jsx
-│   │   ├── RegisterPage.jsx
-│   │   ├── DashboardPage.jsx
-│   │   ├── TransactionsPage.jsx
-│   │   ├── AccountsPage.jsx
-│   │   ├── CategoriesPage.jsx
-│   │   ├── BudgetsPage.jsx
-│   │   ├── GoalsPage.jsx
-│   │   ├── DebtsPage.jsx
-│   │   ├── InvestmentsPage.jsx
-│   │   ├── ReportsPage.jsx
-│   │   ├── CalculatorsPage.jsx
-│   │   └── NotificationsPage.jsx
-│   └── utils/
-│       ├── format.js            # Number/currency/date formatters
-│       └── iconMap.js           # Icon name → Lucide component map
-└── public/
-└── vite.svg
+```
+financepro-backend-fixed/
+└── server/
+    ├── .env                          # Environment variables
+    ├── app.js                        # Express app, middleware, routes
+    ├── server.js                     # Entry point — DB connect + listen
+    ├── config/
+    │   └── db.js                     # Sequelize connection config
+    ├── models/
+    │   └── index.js                  # All Sequelize models + associations
+    ├── controllers/
+    │   ├── auth.controller.js
+    │   ├── account.controller.js
+    │   ├── transaction.controller.js
+    │   ├── budget.controller.js
+    │   ├── goal.controller.js
+    │   ├── debt.controller.js
+    │   ├── investment.controller.js
+    │   ├── recurring.controller.js
+    │   ├── report.controller.js
+    │   ├── insight.controller.js
+    │   ├── notification.controller.js
+    │   ├── calculator.controller.js
+    │   └── user.controller.js
+    ├── routes/
+    │   ├── auth.routes.js
+    │   ├── user.routes.js
+    │   ├── account.routes.js
+    │   ├── transaction.routes.js
+    │   ├── category.routes.js
+    │   ├── income.routes.js
+    │   └── combined.routes.js        # Budgets, goals, debts, investments,
+    │                                 # recurring, reports, insights,
+    │                                 # notifications, calculators
+    ├── middleware/
+    │   ├── auth.middleware.js        # JWT verification
+    │   └── errorHandler.js          # Global error handler
+    ├── services/
+    │   └── insight.service.js       # Insight generation logic
+    ├── jobs/
+    │   └── cronJobs.js              # Scheduled tasks
+    ├── utils/
+    │   ├── financeCalculations.js   # EMI, SIP, compound, payoff plans
+    │   └── response.js              # Standardized API response helpers
+    └── seeders/
+        └── seed.js                  # Demo data seeder
 
----
+financepro-frontend-fixed/
+└── client/
+    ├── .env                         # VITE_API_URL
+    ├── index.html
+    ├── vite.config.js
+    ├── tailwind.config.js
+    ├── postcss.config.js
+    └── src/
+        ├── main.jsx                 # React entry point
+        ├── App.jsx                  # Router + auth guards
+        ├── index.css                # Global styles + CSS variables
+        ├── api/
+        │   └── axios.js             # Axios instance + token interceptors
+        ├── store/
+        │   ├── index.js             # Redux store
+        │   └── authSlice.js         # Auth state + async thunks
+        ├── hooks/
+        │   └── useApi.js            # Generic API hook
+        ├── components/
+        │   ├── common/
+        │   │   ├── ConfirmDialog.jsx
+        │   │   ├── EmptyState.jsx
+        │   │   ├── Modal.jsx
+        │   │   └── Spinner.jsx
+        │   └── layout/
+        │       ├── AppLayout.jsx
+        │       ├── Header.jsx
+        │       └── Sidebar.jsx
+        ├── pages/
+        │   ├── LoginPage.jsx
+        │   ├── RegisterPage.jsx
+        │   ├── DashboardPage.jsx
+        │   ├── TransactionsPage.jsx
+        │   ├── AccountsPage.jsx
+        │   ├── CategoriesPage.jsx
+        │   ├── BudgetsPage.jsx
+        │   ├── GoalsPage.jsx
+        │   ├── DebtsPage.jsx
+        │   ├── InvestmentsPage.jsx
+        │   ├── ReportsPage.jsx
+        │   ├── CalculatorsPage.jsx
+        │   └── NotificationsPage.jsx
+        └── utils/
+            ├── format.js            # Number/currency/date formatters
+            └── iconMap.js           # Icon name → Lucide component map
+```
 
 ## Database Models
 
